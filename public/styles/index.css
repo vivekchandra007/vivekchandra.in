@@ -6,14 +6,18 @@ body {
     background-size: cover;
     filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src='../img/background2.jpg', sizingMethod='scale');
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/background2.jpg', sizingMethod='scale')";*/
-    background-color: #c0392b;
+    background: url('../img/leaf.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     text-align: center;
     color: whitesmoke;
     margin: auto;
     margin-top: auto;
     width: 96%;
     margin-bottom: 60px;
-    font-family: Lato,sans-serif;
+    font-family: Lato, sans-serif;
 }
 
 .standOut {
@@ -86,7 +90,7 @@ body {
     padding: 12px;
     padding-top: 0;
     /*border-radius: 12px 0 0 12px;*/
-    color: #4C1412;
+    color: whitesmoke;
 }
 
 #content {
