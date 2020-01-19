@@ -98,6 +98,10 @@ body {
     margin-top: 21px;
 }
 
+.navbar-collapse.navbar-right.collapse[aria-expanded="true"] {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
 /*.passions-2:hover {
     background-image: url('../img/div-back.png');
     color: silver;
