@@ -9,6 +9,9 @@ $(document).ready(function () {
 
 function topMenuClicked(menuItemName) {
     switch (menuItemName) {
+        case 'HOME':
+            $('#content').load('../index.html');
+            break;
         case 'PROJECTS':
             $('#content').load('../projects.html');
             break;
@@ -28,4 +31,5 @@ function topMenuClicked(menuItemName) {
             $('#content').html('NO CONTENT FOUND!');
             break;
     }
+    $('.navbar-collapse.navbar-right.collapse[aria-expanded="true"]').removeClass('in');
 }
