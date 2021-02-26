@@ -1,0 +1,23 @@
+{
+  "name": "vivekchandra.in",
+  "version": "1.0.0",
+  "description": "My portfolio website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekchandra007/vivekchandra.in.git"
+  },
+  "author": "Vivek Chandra",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/vivekchandra007/vivekchandra.in/issues"
+  },
+  "homepage": "https://github.com/vivekchandra007/vivekchandra.in#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

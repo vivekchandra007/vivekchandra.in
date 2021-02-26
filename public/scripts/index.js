@@ -1,3 +1,10 @@
+var app = new Vue({
+  el: "#app",
+  data: {
+    name: "Vivek Chandra",
+  },
+});
+
 $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
     $('#logo').fadeIn(1000);

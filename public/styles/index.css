@@ -31,11 +31,11 @@ body {
 }
 
 .nav li a:hover {
-    color: #c0392b;
+    background-color: rgba(61, 61, 61,0.7);
 }
 
 .nav li a:focus {
-    color: #c0392b;
+    background-color: rgba(61, 61, 61,0.7);
 }
 
 /* #brand {
