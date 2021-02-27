@@ -12,9 +12,15 @@ $(document).ready(function () {
   $("#btnMenuCollapse").click(function () {
     $(".nav li a").css("background", "rgba(231, 76, 60, 1.0)");
   });
-  $("#imageFullScreen .close-icon").click(function  ()  {
+  $("#imageFullScreen").click(function (e) {
+    if (e.target !== this) {
+      return;
+    }
     $("#imageFullScreen").hide();
-   });
+  });
+  $("#imageFullScreen .close-icon").click(function () {
+    $("#imageFullScreen").hide();
+  });
 });
 
 function topMenuClicked(menuItemName) {
