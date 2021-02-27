@@ -98,9 +98,26 @@ body {
     margin-top: 21px;
 }
 
+#imageFullScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1%;
+    width: 98%;
+    height: 98%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+}
+
+#imageFullScreen .close-icon {
+    float: right;
+    cursor: pointer;
+}
+
 .navbar-collapse.navbar-right.collapse[aria-expanded="true"] {
     background-color: rgba(0, 0, 0, 0.9);
 }
+
 
 /*.passions-2:hover {
     background-image: url('../img/div-back.png');
