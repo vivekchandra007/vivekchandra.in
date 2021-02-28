@@ -98,6 +98,23 @@ body {
     margin-top: 21px;
 }
 
+#photography .thumbnail {
+    display: contents;
+}
+#photography .caption {
+    position: relative;
+    bottom: 31px;
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+#photography .caption p {
+    background-color: rgba(10, 10, 10, 0.3); 
+    margin: 0;
+    position: inherit;
+    bottom: -11px;
+}
+
 #imageFullScreen {
     position: fixed;
     top: 0;
