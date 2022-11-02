@@ -1,0 +1,17 @@
+<div id="photography" class="row">
+  <div class="col-md-4" v-for="(photograph, index) in photographs">
+    <div class="thumbnail">
+      <a :href="'javascript:showImageFullScreen(\'' + photograph.path + '\')'">
+        <img
+          :src="photograph.path"
+          :alt="photograph.title"
+          style="width: 100%"
+        />
+        <div class="caption">
+          <p>{{ photograph.title }}</p>
+          <img src="img/divider-white.png" />
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
