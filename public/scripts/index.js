@@ -62,7 +62,6 @@ createApp({
   },
 
   showImageFullScreen(imagePath) {
-    console.log(imagePath);
     $("#imageFullScreen .fullScreen").attr("src", imagePath);
     $("#imageFullScreen").fadeIn();
   }
