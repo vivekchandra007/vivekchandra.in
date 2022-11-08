@@ -30,7 +30,8 @@ body {
     background: rgba(52, 73, 94, 0.1);
 }
 
-.nav li a:hover {
+.nav li a:hover,
+.nav li.active {
     background-color: rgba(61, 61, 61,0.7);
 }
 

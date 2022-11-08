@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns: xmlns:>
 
 <head>
     <meta charset="utf-8" />
@@ -22,8 +22,10 @@
         integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
         crossorigin="anonymous"></script>
 
-    <!-- VueJS production version, optimized for size and speed -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <!-- VueJS (petite-vue) production version, optimized for size and speed -->
+    <script src="https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.iife.js"></script>
+    <!-- custom js -->
+    <script type="module" src="scripts/index.js"></script>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -53,8 +55,7 @@
 
 <body>
     <noscript>Your browser does not support JavaScript!</noscript>
-    <div id="app">
-        {{currentPage}}
+    <div v-scope @vue:mounted="mounted">
         <div class="container-fluid">
             <nav class="navbar navbar-fixed-top"></nav>
             <nav class="navbar navbar-fixed-top" style="padding: 1px; padding-top: 1px">
@@ -62,39 +63,39 @@
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar" style="background: white"></span>
                             <span class="icon-bar" style="background: white"></span>
                             <span class="icon-bar" style="background: white"></span>
                         </button>
                         <a class="navbar-brand" href="/"><img alt="Brand" id="brand" class="img-rounded"
-                                src="img/logo4.png" height="180%" title="Go to Home Page" /></a>
+                                                              src="img/logo4.png" height="180%" title="Go to Home Page" /></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active standOut">
-                                <a href="/">HOME<span class="sr-only">(current)</span></a>
+                            <li class="standOut":class="{'active': currentPage.toUpperCase() === 'HOME'}">
+                                <a href="/">HOME</a>
                             </li>
-                            <li class="standOut">
-                                <a href="javascript:topMenuClicked('PROJECTS');">PROJECTS</a>
+                            <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'PROJECTS'}">
+                                <a @click="topMenuClicked('PROJECTS')">PROJECTS</a>
                             </li>
-                            <li class="standOut">
-                                <a href="javascript:topMenuClicked('APPS');">APPS</a>
+                            <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'APPS'}">
+                                <a @click="topMenuClicked('APPS')">APPS</a>
                             </li>
-                            <li class="standOut">
-                                <a href="javascript:topMenuClicked('PHOTOGRAPHY');">PHOTOGRAPHY</a>
+                            <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'PHOTOGRAPHY'}">
+                                <a @click="topMenuClicked('PHOTOGRAPHY')">PHOTOGRAPHY</a>
                             </li>
-                            <li class="standOut">
-                                <a href="javascript:topMenuClicked('LITERARY WORKS');">LITERARY WORKS</a>
+                            <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'LITERARY WORKS'}">
+                                <a @click="topMenuClicked('LITERARY WORKS')">LITERARY WORKS</a>
                             </li>
-                            <li class="standOut">
-                                <a href="javascript:topMenuClicked('IDEAS');">IDEAS</a>
+                            <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'IDEAS'}">
+                                <a @click="topMenuClicked('IDEAS')">IDEAS</a>
                             </li>
-                            <li class="standOut">
-                                <a href="javascript:showContactModal();">CONTACT ME</a>
+                            <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'CONTACT ME'}">
+                                <a @click="showContactModal()">CONTACT ME</a>
                             </li>
                         </ul>
                     </div>
@@ -104,7 +105,9 @@
             </nav>
             <br />
             <br />
-            <div id="content" :key="currentPage">
+
+            <!--MENU BASED CONTENT STARTS-->
+            <div v-if="currentPage.toUpperCase() === 'HOME'">
                 <section class="intro">
                     <h2>Hi, I'm</h2>
                     <h1 class="standOut name">{{ name }}</h1>
@@ -146,48 +149,132 @@
                     </div>
                 </div>
             </div>
+            <div v-else-if="currentPage.toUpperCase() === 'PROJECTS'">
+                <br/><br/><br>
+                <div class="row" style="vertical-align: middle;">
+                    <div class="col-md-6 passions">
+                        <h1>¤</h1>
+                        <h3 class="standOut">Model Manager (HALO)</h3>
+                        <p style="color: silver">
+                            Part of team at T-Systems developing a workplace to run/ manage/ share/ create automated workflows i.e. manage
+                            the complete lifecycle for the AI or ML models worked upon by the
+                            engineering team at our parent company Deutsche Telekom AG.
+                            <br/>It is being
+                            made possible through the next generation application “HALO”, especially
+                            designed to churn huge amounts of data from the telecom domain. Our
+                            sibling subsidiary T-Mobile is now America’s largest and fastest 5G
+                            network.
+                        </p>
+                    </div>
+                    <div class="col-md-6 passions-2">
+                        <h1>¤</h1>
+                        <h3 class="standOut">
+                            <a
+                                    target="_blank"
+                                    href="https://viewer.docs.sws.siemens.com/en-US/product/224565084/sws/PL20181210134853460.apollo_topicSet/html/web_framework_overview"
+                                    style="color: white"
+                            >
+                                Siemens Web Framework (SWF)
+                            </a>
+                        </h3>
+                        <p style="color: white">
+                            Was Core member of team at Siemens DiSW, developing Siemens’ internal web UI declarative
+                            framework: “Siemens Web Framework (SWF)”,
+                            upon which Siemens industry PLM software products like Active
+                            Workspace or TeamCenter, etc are built.
+                            <br/>It is the backbone of
+                            Siemens’ upcoming Cloud strategy, for building industry scale applications
+                            having modern and consistent layout, also not being prone to rapid changes
+                            in web technologies, achieved via the framework’s abstraction layer.
+                        </p>
+                    </div>
+                </div>
+                <img src="img/divider-white.png" />
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="https://in.linkedin.com/in/vivekchandra007" target="_blank"><img height="50" src="./img/View-my-LinkedIn.png" /></a>
+                    </div>
+                </div>
+            </div>
+            <div v-else-if="currentPage.toUpperCase() === 'PHOTOGRAPHY'">
+                <br/><br/><br>
+                <div id="photography" class="row">
+                    <div class="col-md-4" v-for="(photograph, index) in photographs">
+                        <div class="thumbnail">
+                            <a @click="showImageFullScreen(\'' + photograph.path + '\')'">
+                                <img :src="photograph.path"
+                                     :alt="photograph.title" style="width: 100%"
+                                />
+                                <div class="caption">
+                                    <p>{{ photograph.title }}</p>
+                                    <img src="img/divider-white.png" />
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-else-if="currentPage.toUpperCase() === 'IDEAS'">
+                <br/><br/><br>
+                <div class="row" style="vertical-align: middle;">
+                    <div class="col-md-4 passions">
+                        <blockquote class="twitter-tweet"><p lang="en" dir="ltr">First in the series:<br>How to make <a href="https://twitter.com/amazon?ref_src=twsrc%5Etfw">@amazon</a> <a href="https://twitter.com/hashtag/MoreSuccessful?src=hash&amp;ref_src=twsrc%5Etfw">#MoreSuccessful</a> ?<a href="https://twitter.com/hashtag/Amazon?src=hash&amp;ref_src=twsrc%5Etfw">#Amazon</a> <a href="https://twitter.com/amazonIN?ref_src=twsrc%5Etfw">@amazonIN</a> <a href="https://twitter.com/hashtag/AmazonIndia?src=hash&amp;ref_src=twsrc%5Etfw">#AmazonIndia</a> <a href="https://twitter.com/hashtag/DeepCogitations?src=hash&amp;ref_src=twsrc%5Etfw">#DeepCogitations</a> <a href="https://twitter.com/hashtag/BusinessIdea?src=hash&amp;ref_src=twsrc%5Etfw">#BusinessIdea</a> <a href="https://twitter.com/DeepCogitations?ref_src=twsrc%5Etfw">@DeepCogitations</a> <a href="https://t.co/3lqh2IFSBT">pic.twitter.com/3lqh2IFSBT</a></p>&mdash; Cogitations (@DeepCogitations) <a href="https://twitter.com/DeepCogitations/status/830860946960764931?ref_src=twsrc%5Etfw">February 12, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                    <div class="col-md-4 passions-2">
+                        <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Next in the series:<br>How to make <a href="https://twitter.com/Twitter?ref_src=twsrc%5Etfw">@Twitter</a> <a href="https://twitter.com/hashtag/MoreSuccessful?src=hash&amp;ref_src=twsrc%5Etfw">#MoreSuccessful</a> ?<a href="https://twitter.com/hashtag/Twitter?src=hash&amp;ref_src=twsrc%5Etfw">#Twitter</a> <a href="https://twitter.com/hashtag/EliteCommunities?src=hash&amp;ref_src=twsrc%5Etfw">#EliteCommunities</a> <a href="https://twitter.com/hashtag/DeepCogitations?src=hash&amp;ref_src=twsrc%5Etfw">#DeepCogitations</a> <a href="https://twitter.com/hashtag/BusinessIdea?src=hash&amp;ref_src=twsrc%5Etfw">#BusinessIdea</a> <a href="https://twitter.com/DeepCogitations?ref_src=twsrc%5Etfw">@DeepCogitations</a> <a href="https://t.co/NYM5phIuPb">pic.twitter.com/NYM5phIuPb</a></p>&mdash; Cogitations (@DeepCogitations) <a href="https://twitter.com/DeepCogitations/status/830861159716757504?ref_src=twsrc%5Etfw">February 12, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                    <div class="col-md-4 passions">
+                        <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Next in the series:<br>How to make <a href="https://twitter.com/bookmyshow?ref_src=twsrc%5Etfw">@bookmyshow</a> <a href="https://twitter.com/hashtag/MoreSuccessful?src=hash&amp;ref_src=twsrc%5Etfw">#MoreSuccessful</a> ?<a href="https://twitter.com/fafsters?ref_src=twsrc%5Etfw">@fafsters</a><a href="https://twitter.com/hashtag/Bookmyshow?src=hash&amp;ref_src=twsrc%5Etfw">#Bookmyshow</a> <a href="https://twitter.com/hashtag/bms?src=hash&amp;ref_src=twsrc%5Etfw">#bms</a><a href="https://twitter.com/hashtag/EmotionalConnect?src=hash&amp;ref_src=twsrc%5Etfw">#EmotionalConnect</a> <a href="https://twitter.com/hashtag/DeepCogitations?src=hash&amp;ref_src=twsrc%5Etfw">#DeepCogitations</a> <a href="https://twitter.com/hashtag/BusinessIdea?src=hash&amp;ref_src=twsrc%5Etfw">#BusinessIdea</a> <a href="https://twitter.com/DeepCogitations?ref_src=twsrc%5Etfw">@DeepCogitations</a> <a href="https://t.co/nyMLA5HOFe">pic.twitter.com/nyMLA5HOFe</a></p>&mdash; Cogitations (@DeepCogitations) <a href="https://twitter.com/DeepCogitations/status/978959653546504194?ref_src=twsrc%5Etfw">March 28, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+            </div>
+            <div v-else>
+                <div class="standout">
+                    <h1>{{currentPage}}</h1>
+                    <p><-- under construction --></p>
+                </div>
+            </div>
+            <!--MENU BASED CONTENT ENDS-->
         </div>
         <div id="imageFullScreen">
             <img class="close-icon" height="32" src="img/close.svg">
             <img class="fullScreen" src="">
         </div>
         <div class="footer navbar navbar-transparent navbar-fixed-bottom"
-            style="background: rgba(0, 0, 0, 0.7); padding-top: 6px">
+             style="background: rgba(0, 0, 0, 0.7); padding-top: 6px">
             <a href="files/Resume-VivekChandra.pdf" data-toggle="tooltip" data-placement="top" target="_blank"
-                title="Download Resume">
+               title="Download Resume">
                 <img class="links" src="img/download2.png" alt="Download Resume" height="36px" />
             </a>
             &nbsp;
             <a href="https://in.linkedin.com/in/vivekchandra007" data-toggle="tooltip" data-placement="top"
-                target="_blank" title="LinkedIn">
+               target="_blank" title="LinkedIn">
                 <img src="img/linkedin2.png" alt="LinkedIn" height="36px" />
             </a>
             &nbsp;
             <a href="https://github.com/vivekchandra007" data-toggle="tooltip" data-placement="top" target="_blank"
-                title="GitHub">
+               title="GitHub">
                 <img src="img/github.png" alt="GitHub" height="36px" />
             </a>
             &nbsp;
             <a href="https://www.facebook.com/vivekchandraphotography/" data-toggle="tooltip" data-placement="top"
-                target="_blank" title="Facebook">
+               target="_blank" title="Facebook">
                 <img src="img/facebook.png" alt="Facebook" height="36px" />
             </a>
             &nbsp;
             <a href="https://www.instagram.com/vivekchandra007/" data-toggle="tooltip" data-placement="top"
-                target="_blank" title="Instagram">
+               target="_blank" title="Instagram">
                 <img src="img/instagram2.png" alt="Instagram" height="36px" />
             </a>
             &nbsp;
             <a href="https://twitter.com/DeepCogitations" data-toggle="tooltip" data-placement="top" target="_blank"
-                title="Twitter">
+               title="Twitter">
                 <img src="img/twitter3.png" alt="Twitter" height="36px" />
             </a>
             <!--<p>© Vivek Chandra</p>-->
         </div>
-        <!-- custom js -->
-        <script src="scripts/index.js"></script>
-        <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
     </div>
+    <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 </body>
 
 </html>
