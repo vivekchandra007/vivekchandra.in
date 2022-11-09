@@ -32,7 +32,7 @@ body {
 
 .nav li a:hover,
 .nav li.active {
-    background-color: rgba(61, 61, 61,0.7);
+    background-color: rgba(0,0,0, 0.7);
     cursor: pointer;
 }
 
@@ -48,10 +48,6 @@ body {
 #brand:hover {
     background: rgba(231, 76, 60, 0.5);
     box-shadow: 2px 2px 10px #992D23;
-}
-
-.footer {
-    opacity: 0.9;
 }
 
 .intro {
@@ -76,24 +72,35 @@ body {
 }
 
 .passions {
-    background-image: url('../img/div-back.png');
+    background-color: rgba(0,0,0, 0.7);
     padding: 12px;
     padding-top: 0;
     color: whitesmoke;
-    /*border-radius: 12px 0 0 12px;*/
+    transition: all 1s ease;
 }
 
-/*.passions:hover {
-    background-image: url('../img/div-back-2.png');
-    color: #2c3e50;
-}*/
+.passions p {
+    color: papayawhip;
+}
+
+.passions:hover {
+    background-color: rgba(0,0,0, 1);
+    color: wheat;
+}
 
 .passions-2 {
-    background-image: url('../img/div-back-2.png');
+    background-color: rgba(0,0,0, 0.5);
     padding: 12px;
     padding-top: 0;
-    /*border-radius: 12px 0 0 12px;*/
     color: whitesmoke;
+    transition: all 1s ease;
+}
+.passions-2:hover {
+    background-color: rgba(0,0,0, 1);
+    color: wheat;
+}
+.passions-2 p {
+    color: antiquewhite;
 }
 
 #content {
@@ -143,62 +150,3 @@ body {
 .navbar-collapse.navbar-right.collapse[aria-expanded="true"] {
     background-color: rgba(0, 0, 0, 0.9);
 }
-
-
-/*.passions-2:hover {
-    background-image: url('../img/div-back.png');
-    color: silver;
-}*/
-
-/*ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    align-items: center;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-}
-
-li a:hover {
-    background-image: url('../img/div-back-2.png');
-    text-decoration: none;
-    color: whitesmoke;
-    border-radius: 3px;
-}*/
-
-.mastfoot {
-    margin-top: 48px;
-    opacity: .9;
-    padding-bottom: 21px;
-}
-
-/* .links {
-    border-bottom: 1px solid #bdc3c7;
-} */
-
-/*.navigation {}
-
-.not-a-link,
-.not-a-link:visited,
-.not-a-link:active {
-    color: white;
-    text-decoration: none;
-}
-
-.navigation:hover,
-.not-a-link:hover {
-    color: cadetblue;
-    background-color: white;
-    text-decoration: none;
-}*/
