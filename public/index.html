@@ -169,12 +169,9 @@
                     <div class="col-md-6 passions-2">
                         <h1>¤</h1>
                         <h3 class="standOut">
-                            <a
-                                    target="_blank"
-                                    href="https://viewer.docs.sws.siemens.com/en-US/product/224565084/sws/PL20181210134853460.apollo_topicSet/html/web_framework_overview"
-                                    style="color: white"
-                            >
-                                Siemens Web Framework (SWF)
+                            <a target="_blank"
+                               href="https://viewer.docs.sws.siemens.com/en-US/product/224565084/sws/PL20181210134853460.apollo_topicSet/html/web_framework_overview"
+                               style="color: white">Siemens Web Framework (SWF)
                             </a>
                         </h3>
                         <p style="color: white">
@@ -201,7 +198,7 @@
                 <div id="photography" class="row">
                     <div class="col-md-4" v-for="(photograph, index) in photographs">
                         <div class="thumbnail">
-                            <a @click="showImageFullScreen(\'' + photograph.path + '\')'">
+                            <a @click="showImageFullScreen(photograph.path)">
                                 <img :src="photograph.path"
                                      :alt="photograph.title" style="width: 100%"
                                 />

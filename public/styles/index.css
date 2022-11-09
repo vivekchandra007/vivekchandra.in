@@ -7,7 +7,7 @@ body {
     filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src='../img/background2.jpg', sizingMethod='scale');
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/background2.jpg', sizingMethod='scale')";*/
     background-color: black;
-    background: url('../img/leaf.png') no-repeat center center fixed;
+    background: url('../img/shri-krishna-lotus-graphic.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -33,6 +33,7 @@ body {
 .nav li a:hover,
 .nav li.active {
     background-color: rgba(61, 61, 61,0.7);
+    cursor: pointer;
 }
 
 .nav li a:focus {
@@ -101,6 +102,7 @@ body {
 
 #photography .thumbnail {
     display: contents;
+    cursor: pointer;
 }
 #photography .caption {
     position: relative;
