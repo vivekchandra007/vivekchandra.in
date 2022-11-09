@@ -150,3 +150,8 @@ body {
 .navbar-collapse.navbar-right.collapse[aria-expanded="true"] {
     background-color: rgba(0, 0, 0, 0.9);
 }
+
+.tweet-image {
+    width: 353px;
+    padding-top: 12px;;
+}
