@@ -82,9 +82,9 @@
                             <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'PROJECTS'}">
                                 <a @click="topMenuClicked('PROJECTS')">PROJECTS</a>
                             </li>
-                            <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'APPS'}">
+                            <!-- <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'APPS'}">
                                 <a @click="topMenuClicked('APPS')">APPS</a>
-                            </li>
+                            </li> -->
                             <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'PHOTOGRAPHY'}">
                                 <a @click="topMenuClicked('PHOTOGRAPHY')">PHOTOGRAPHY</a>
                             </li>
@@ -118,23 +118,22 @@
                         <h1>¤</h1>
                         <h3 class="standOut">#engineer</h3>
                         <p>
-                            Full Stack Architect @ T-Systems (Deutsche Telekom) | Ex-Siemens, IBM & Infosys, <br>having 13 years of s/w development
-                            experience in JS stack
+                            Sr. Principal Engineer (Full Stack Architect) @ Deutsche Telekom <br> Ex-Siemens, IBM & Infosys <br> 15 years experience in s/w architecture, strategic planning, team leadership and detailed execution| 
                         </p>
                     </div>
                     <div class="col-md-3 passions-2">
                         <h1>¤</h1>
                         <h3 class="standOut">#designer</h3>
                         <p>
-                            a creative frontend (UI) and user experience (UX) designer, always trying
-                            to <br>get inspired and mimic Nature in my works
+                            a creative frontend (UI) and user experience (UX) designer <br>always trying
+                            to get inspired and <br>mimic Nature, in my works
                         </p>
                     </div>
                     <div class="col-md-3 passions">
                         <h1>¤</h1>
                         <h3 class="standOut">#dreamer</h3>
                         <p>
-                            a hard-core cinema buff, aspiring science fiction writer,
+                            a hard-core cinema buff, aspiring science fiction writer <br>
                             a thinker, an imaginator...<br />a dreamer
                         </p>
                     </div>
@@ -142,8 +141,8 @@
                         <h1>¤</h1>
                         <h3 class="standOut">#photographer</h3>
                         <p>
-                            a hobbyist cum amateur photographer, deeply passionate about
-                            <br>frame-freezing Nature, landscapes and stars
+                            a hobbyist cum amateur photographer <br>deeply passionate about
+                            <br>frame-freezing Nature, landscapes <br>and stars ⭐
                         </p>
                     </div>
                 </div>
@@ -151,7 +150,18 @@
             <div v-else-if="currentPage.toUpperCase() === 'PROJECTS'">
                 <br/><br/><br>
                 <div class="row" style="vertical-align: middle;">
-                    <div class="col-md-6 passions">
+                    <div class="col-md-4 passions">
+                        <h1>¤</h1>
+                        <h3 class="standOut">CSD (Common Service Desk) Next Level</h3>
+                        <p>
+                            This Gen AI (RASA) based Chatbot acts as single point of contact for all IT related workplace queries and
+                            requests, providing 24x7 support to all employees of Deutsche Telekom AG.
+                            <br>It has benefitted the company by reducing reliance on human agents for answering repetitive trivial queries.
+                            <br/>It is part of Conversational Platform As a Service (ConPaas) initiative by Deutsche Telekom. <br>
+                            <a href="https://www.linkedin.com/posts/peter-leukert_calm-heartoftheleadingdigitaltelco-deutschetelekomit-activity-7235222132887040001-XWuh" target="_blank">Special Mention to us, directly by DT's global CIO, Dr. Peter Leukert</a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 passions-2">
                         <h1>¤</h1>
                         <h3 class="standOut">Model Manager (HALO)</h3>
                         <p>
@@ -165,7 +175,7 @@
                             network.
                         </p>
                     </div>
-                    <div class="col-md-6 passions-2">
+                    <div class="col-md-4 passions">
                         <h1>¤</h1>
                         <h3 class="standOut">
                             <a target="_blank"
@@ -233,7 +243,7 @@
             <div v-else>
                 <div class="standout">
                     <h1>{{currentPage}}</h1>
-                    <p><-- under construction --></p>
+                    <p><-- In draft right now. Will soon be live 😊 --></p>
                 </div>
             </div>
             <!--MENU BASED CONTENT ENDS-->
