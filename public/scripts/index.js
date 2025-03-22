@@ -1,6 +1,4 @@
-import { createApp } from 'https://unpkg.com/petite-vue?module'
-
-createApp({
+PetiteVue.createApp({
   // exposed to all expressions
   name: "Vivek Chandra",
   currentPage: "HOME",
