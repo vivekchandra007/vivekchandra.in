@@ -1,159 +1,365 @@
+:root {
+    --bg-color: transparent;
+    --text-primary: #ffffff;
+    --text-secondary: #d1d5db;
+    --accent: #4f46e5;
+    --accent-hover: #6366f1;
+    --glass-bg: rgba(10, 10, 15, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
 body {
-    /*background: url('../img/background2.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src='../img/background2.jpg', sizingMethod='scale');
-    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/background2.jpg', sizingMethod='scale')";*/
-    background-color: black;
-    background: url('../img/shri-krishna-lotus-graphic.png') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: transparent;
+    /* Let vanta bg out */
     text-align: center;
-    color: whitesmoke;
+    color: var(--text-primary);
     margin: auto;
-    margin-top: auto;
-    width: 96%;
-    margin-bottom: 60px;
-    font-family: Lato, sans-serif;
+    width: 100%;
+    margin-bottom: 80px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
 .standOut {
-    font-family: 'Mate SC', serif;
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+}
+
+/* Navbar overrides */
+.navbar-fixed-top {
+    background: rgba(10, 10, 15, 0.6) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border) !important;
+    padding: 8px 0 !important;
+    transition: all 0.3s ease;
 }
 
 .nav li a {
-    color: white;
-    background: rgba(52, 73, 94, 0.1);
+    color: var(--text-primary);
+    background: transparent;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 5px;
+    letter-spacing: 0.05em;
+    font-size: 13px;
 }
 
 .nav li a:hover,
-.nav li.active {
-    background-color: rgba(0,0,0, 0.7);
+.nav li.active>a {
+    background-color: var(--accent) !important;
+    color: #fff !important;
     cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
 }
 
-.nav li a:focus {
-    background-color: rgba(61, 61, 61,0.7);
+.navbar-brand img {
+    transition: all 0.3s ease;
+    border-radius: 12px;
 }
-
-/* #brand {
-    padding: 12px;
-    margin-top: -15px;
-} */
 
 #brand:hover {
-    background: rgba(231, 76, 60, 0.5);
-    box-shadow: 2px 2px 10px #992D23;
+    background: transparent;
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
 }
 
+/* Content Sections */
 .intro {
-    margin-top: 42px;
-    margin-bottom: 42px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    animation: fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navigation {
-    width: 45%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    opacity: 0.9;
+.intro h2 {
+    font-size: 24px;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-weight: 400;
 }
 
 .name {
     color: white;
-    font-size: 66px;
-    opacity: 1;
-    text-emphasis: bold;
+    font-size: 80px;
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(to right, #ffffff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(165, 180, 252, 0.3);
+    margin-bottom: 30px;
 }
 
-.passions {
-    background-color: rgba(0,0,0, 0.7);
-    min-height: 230px;
-    padding: 12px;
-    padding-top: 0;
-    color: whitesmoke;
-    transition: all 1s ease;
-}
-
-.passions p {
-    color: papayawhip;
-}
-
-.passions:hover {
-    background-color: rgba(0,0,0, 1);
-    color: wheat;
-}
-
+/* Glassmorphism cards */
+.passions,
 .passions-2 {
-    background-color: rgba(0,0,0, 0.5);
-    min-height: 230px;
-    padding: 12px;
-    padding-top: 0;
-    color: whitesmoke;
-    transition: all 1s ease;
-}
-.passions-2:hover {
-    background-color: rgba(0,0,0, 1);
-    color: wheat;
-}
-.passions-2 p {
-    color: antiquewhite;
-}
-
-#content {
-    margin-top: 21px;
-}
-
-.thumbnail {
-    display: contents;
-    cursor: pointer;
-}
-#photography .caption {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
+    min-height: 300px;
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
-    bottom: 31px;
-    padding: 0;
-    margin: 0;
-    color: white;
-}
-#photography .caption p {
-    background-color: rgba(10, 10, 10, 0.3); 
-    margin: 0;
-    position: inherit;
-    bottom: -11px;
+    overflow: hidden;
 }
 
+.passions p,
+.passions-2 p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-top: 15px;
+}
+
+.passions:hover,
+.passions-2:hover {
+    background: rgba(20, 20, 30, 0.7);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(79, 70, 229, 0.5);
+}
+
+/* Highlight tags in cards */
+.passions h3,
+.passions-2 h3 {
+    color: #818cf8;
+    /* lighter accent */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(129, 140, 248, 0.3);
+}
+
+/* Photographs and grid elements */
+.thumbnail {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 10px;
+    transition: all 0.4s ease;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: var(--glass-shadow);
+}
+
+.thumbnail img {
+    border-radius: 8px;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail:hover img {
+    transform: scale(1.05);
+}
+
+.thumbnail:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(79, 70, 229, 0.4);
+    background: rgba(25, 25, 30, 0.6);
+}
+
+#photography a {
+    position: relative;
+    display: block;
+}
+
+#photography .caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    padding: 15px;
+    background: rgba(10, 10, 15, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.thumbnail:hover .caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#photography .caption p {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#photography .caption img {
+    display: none;
+    /* Hide the weird divider image in captions */
+}
+
+/* Fullscreen Image View */
 #imageFullScreen {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
     z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #imageFullScreen .close-icon {
-    float: right;
+    position: absolute;
+    top: 30px;
+    right: 30px;
     cursor: pointer;
+    transition: transform 0.3s ease;
+    filter: invert(1);
+    opacity: 0.7;
+    z-index: 10001;
+}
+
+#imageFullScreen .close-icon:hover {
+    transform: scale(1.2) rotate(90deg);
+    opacity: 1;
 }
 
 #imageFullScreen .fullScreen {
-    max-width: 100%;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    animation: zoomIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    object-fit: contain;
 }
 
+/* Footer */
+.footer {
+    background: rgba(10, 10, 15, 0.6) !important;
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--glass-border);
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    z-index: 50;
+}
+
+.footer a img {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    border-radius: 50%;
+}
+
+.footer a:hover img {
+    transform: translateY(-5px) scale(1.15);
+    filter: drop-shadow(0 8px 15px rgba(129, 140, 248, 0.6));
+}
+
+/* Collapsible Navbar Mobile */
 .navbar-collapse.navbar-right.collapse[aria-expanded="true"] {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(15, 15, 20, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 0 0 16px 16px;
+    border: 1px solid var(--glass-border);
+    border-top: none;
+    margin-top: 5px;
+    padding-bottom: 10px;
 }
 
-.tweet-image {
-    width: 353px;
-    padding-top: 12px;;
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Base link styling */
+a {
+    color: var(--accent-hover);
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.col-md-3,
+.col-md-4 {
+    padding: 0 15px;
+    /* Give some spacing between columns */
+}
+
+/* Dividers */
+img[src*="divider"] {
+    display: none;
+    /* Let's remove the legacy dividers as they clutter glassmorphism */
+}
+
+/* Standout Text */
+.standout p {
+    font-size: 20px;
+    color: var(--text-secondary);
 }

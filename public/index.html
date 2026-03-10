@@ -24,6 +24,11 @@
 
     <!-- VueJS (petite-vue) production version, optimized for size and speed -->
     <script src="https://unpkg.com/petite-vue"></script>
+
+    <!-- Three.js and Vanta.js for 3D background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
     <!-- custom js -->
     <script type="module" src="scripts/index.js"></script>
 
@@ -48,6 +53,11 @@
 
     <!-- Custom font -->
     <link href="https://fonts.googleapis.com/css?family=Mate+SC" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <!-- custom css -->
     <link rel="stylesheet" href="styles/index.css" />
@@ -55,6 +65,7 @@
 
 <body>
     <noscript>Your browser does not support JavaScript!</noscript>
+    <div id="vanta-bg" style="position: fixed; z-index: -1; top: 0; left: 0; width: 100vw; height: 100vh;"></div>
     <div v-scope @vue:mounted="mounted">
         <div class="container-fluid">
             <nav class="navbar navbar-fixed-top"></nav>
@@ -63,20 +74,20 @@
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar" style="background: white"></span>
                             <span class="icon-bar" style="background: white"></span>
                             <span class="icon-bar" style="background: white"></span>
                         </button>
                         <a class="navbar-brand" href="/"><img alt="Brand" id="brand" class="img-rounded"
-                                                              src="img/logo4.png" height="180%" title="Go to Home Page" /></a>
+                                src="img/logo4.png" height="180%" title="Go to Home Page" /></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="standOut":class="{'active': currentPage.toUpperCase() === 'HOME'}">
+                            <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'HOME'}">
                                 <a href="/">HOME</a>
                             </li>
                             <li class="standOut" :class="{'active': currentPage.toUpperCase() === 'PROJECTS'}">
@@ -116,31 +127,33 @@
                 <div class="row">
                     <div class="col-md-3 passions">
                         <h1>¤</h1>
-                        <h3 class="standOut">#engineer</h3>
-                        <p>
-                            Sr. Principal Engineer (Full Stack Architect) @ Deutsche Telekom <br> Ex-Siemens, IBM & Infosys <br> 15 years experience in s/w architecture, strategic planning, team leadership and detailed execution
+                        <h3>#engineer</h3>
+                        <p class="standOut">
+                            Sr. Principal Engineer (Full Stack Architect) @ Deutsche Telekom IT<br> Ex-Siemens, IBM &
+                            Infosys <br> 16+ years exp in s/w architecture, strategic planning, team leadership
+                            and detailed execution 🧑🏻‍💻
                         </p>
                     </div>
                     <div class="col-md-3 passions-2">
                         <h1>¤</h1>
-                        <h3 class="standOut">#designer</h3>
-                        <p>
+                        <h3>#designer</h3>
+                        <p class="standOut">
                             a creative frontend (UI) and user experience (UX) designer <br>always trying
-                            to get inspired and <br>mimic Nature, in my works
+                            <br>to get inspired by and mimic Nature 🌈<br>in my works
                         </p>
                     </div>
                     <div class="col-md-3 passions">
                         <h1>¤</h1>
-                        <h3 class="standOut">#dreamer</h3>
-                        <p>
+                        <h3>#dreamer</h3>
+                        <p class="standOut">
                             a hard-core cinema buff, aspiring science fiction writer <br>
-                            a thinker, an imaginator...<br />a dreamer
+                            a thinker, an imaginator...<br />a dreamer 💭
                         </p>
                     </div>
                     <div class="col-md-3 passions-2">
                         <h1>¤</h1>
-                        <h3 class="standOut">#photographer</h3>
-                        <p>
+                        <h3>#photographer</h3>
+                        <p class="standOut">
                             a hobbyist cum amateur photographer <br>deeply passionate about
                             <br>frame-freezing Nature, <br>landscapes and stars ⭐
                         </p>
@@ -148,27 +161,33 @@
                 </div>
             </div>
             <div v-else-if="currentPage.toUpperCase() === 'PROJECTS'">
-                <br/><br/><br>
+                <br /><br /><br>
                 <div class="row" style="vertical-align: middle;">
                     <div class="col-md-4 passions">
                         <h1>¤</h1>
                         <h3 class="standOut">CSD (Common Service Desk) Next Level</h3>
                         <p>
-                            This Gen AI (RASA) based Chatbot acts as single point of contact for all IT related workplace queries and
+                            This Gen AI (RASA) based Chatbot acts as single point of contact for all IT related
+                            workplace queries and
                             requests, providing 24x7 support to all employees of Deutsche Telekom AG.
-                            <br>It has benefitted the company by reducing reliance on human agents for answering repetitive trivial queries.
-                            <br/>It is part of Conversational Platform As a Service (ConPaas) initiative by Deutsche Telekom. <br>
-                            <a href="https://www.linkedin.com/posts/peter-leukert_calm-heartoftheleadingdigitaltelco-deutschetelekomit-activity-7235222132887040001-XWuh" target="_blank">Special Mention to us, directly by DT's global CIO, Dr. Peter Leukert</a>
+                            <br>It has benefitted the company by reducing reliance on human agents for answering
+                            repetitive trivial queries.
+                            <br />It is part of Conversational Platform As a Service (ConPaas) initiative by Deutsche
+                            Telekom. <br>
+                            <a href="https://www.linkedin.com/posts/peter-leukert_calm-heartoftheleadingdigitaltelco-deutschetelekomit-activity-7235222132887040001-XWuh"
+                                target="_blank">Special Mention to us, directly by DT's global CIO, Dr. Peter
+                                Leukert</a>
                         </p>
                     </div>
-                    <div class="col-md-4 passions-2">
+                    <div class="col-md-4 passions">
                         <h1>¤</h1>
                         <h3 class="standOut">Model Manager (HALO)</h3>
                         <p>
-                            Part of team at T-Systems developing a workplace to run/ manage/ share/ create automated workflows i.e. manage
+                            Part of team at T-Systems developing a workplace to run/ manage/ share/ create automated
+                            workflows i.e. manage
                             the complete lifecycle for the AI or ML models worked upon by the
                             engineering team at our parent company Deutsche Telekom AG.
-                            <br/>It is being
+                            <br />It is being
                             made possible through the next generation application “HALO”, especially
                             designed to churn huge amounts of data from the telecom domain. Our
                             sibling subsidiary T-Mobile is now America’s largest and fastest 5G
@@ -178,39 +197,39 @@
                     <div class="col-md-4 passions">
                         <h1>¤</h1>
                         <h3 class="standOut">
-                            <a target="_blank"
-                               href="https://viewer.docs.sws.siemens.com/en-US/product/224565084/sws/PL20181210134853460.apollo_topicSet/html/web_framework_overview"
-                               style="color: white">Siemens Web Framework (SWF)
-                            </a>
+                            Siemens Web Framework (SWF)
                         </h3>
                         <p>
                             Was Core member of team at Siemens DiSW, developing Siemens’ internal web UI declarative
                             framework: “Siemens Web Framework (SWF)”,
                             upon which Siemens industry PLM software products like Active
                             Workspace or TeamCenter, etc are built.
-                            <br/>It is the backbone of
+                            <br />It is the backbone of
                             Siemens’ upcoming Cloud strategy, for building industry scale applications
                             having modern and consistent layout, also not being prone to rapid changes
                             in web technologies, achieved via the framework’s abstraction layer.
+                            <a target="_blank"
+                                href="https://viewer.docs.sws.siemens.com/en-US/product/224565084/sws/PL20181210134853460.apollo_topicSet/html/web_framework_overview">
+                                SWF Link
+                            </a>
                         </p>
                     </div>
                 </div>
                 <img src="img/divider-white.png" />
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="https://www.linkedin.com/in/vivekchandra007/" target="_blank"><img height="50" src="./img/View-my-LinkedIn.png" /></a>
+                        <a href="https://www.linkedin.com/in/vivekchandra007/" target="_blank"><img height="50"
+                                src="./img/View-my-LinkedIn.png" /></a>
                     </div>
                 </div>
             </div>
             <div v-else-if="currentPage.toUpperCase() === 'PHOTOGRAPHY'">
-                <br/><br/><br>
+                <br /><br /><br>
                 <div id="photography" class="row">
                     <div class="col-md-4" v-for="(photograph, index) in photographs">
                         <div class="thumbnail">
                             <a @click="showImageFullScreen(photograph.path)">
-                                <img :src="photograph.path"
-                                     :alt="photograph.title" style="width: 100%"
-                                />
+                                <img :src="photograph.path" :alt="photograph.title" style="width: 100%" />
                                 <div class="caption">
                                     <p>{{ photograph.title }}</p>
                                     <img src="img/divider-white.png" />
@@ -221,21 +240,78 @@
                 </div>
             </div>
             <div v-else-if="currentPage.toUpperCase() === 'IDEAS'">
-                <br/><br/><br>
+                <br /><br /><br>
                 <div class="row" style="vertical-align: middle;">
                     <div class="col-md-4 passions" @click="showImageFullScreen('img/tweet1.jpeg')">
                         <div class="thumbnail"><img src="img/tweet1.jpeg"></div>
-                        <blockquote class="twitter-tweet" data-lang="en" data-dnt="true" data-theme="dark"><p lang="en" dir="ltr">First in the series:<br>How to make <a href="https://twitter.com/amazon?ref_src=twsrc%5Etfw">@amazon</a> <a href="https://twitter.com/hashtag/MoreSuccessful?src=hash&amp;ref_src=twsrc%5Etfw">#MoreSuccessful</a> ?<a href="https://twitter.com/hashtag/Amazon?src=hash&amp;ref_src=twsrc%5Etfw">#Amazon</a> <a href="https://twitter.com/amazonIN?ref_src=twsrc%5Etfw">@amazonIN</a> <a href="https://twitter.com/hashtag/AmazonIndia?src=hash&amp;ref_src=twsrc%5Etfw">#AmazonIndia</a> <a href="https://twitter.com/hashtag/DeepCogitations?src=hash&amp;ref_src=twsrc%5Etfw">#DeepCogitations</a> <a href="https://twitter.com/hashtag/BusinessIdea?src=hash&amp;ref_src=twsrc%5Etfw">#BusinessIdea</a> <a href="https://twitter.com/DeepCogitations?ref_src=twsrc%5Etfw">@DeepCogitations</a> <a href="https://t.co/3lqh2IFSBT">pic.twitter.com/3lqh2IFSBT</a></p>&mdash; Cogitations (@DeepCogitations) <a href="https://twitter.com/DeepCogitations/status/830860946960764931?ref_src=twsrc%5Etfw">February 12, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet" data-lang="en" data-dnt="true" data-theme="dark">
+                            <p lang="en" dir="ltr">First in the series:<br>How to make <a
+                                    href="https://twitter.com/amazon?ref_src=twsrc%5Etfw">@amazon</a> <a
+                                    href="https://twitter.com/hashtag/MoreSuccessful?src=hash&amp;ref_src=twsrc%5Etfw">#MoreSuccessful</a>
+                                ?<a
+                                    href="https://twitter.com/hashtag/Amazon?src=hash&amp;ref_src=twsrc%5Etfw">#Amazon</a>
+                                <a href="https://twitter.com/amazonIN?ref_src=twsrc%5Etfw">@amazonIN</a> <a
+                                    href="https://twitter.com/hashtag/AmazonIndia?src=hash&amp;ref_src=twsrc%5Etfw">#AmazonIndia</a>
+                                <a
+                                    href="https://twitter.com/hashtag/DeepCogitations?src=hash&amp;ref_src=twsrc%5Etfw">#DeepCogitations</a>
+                                <a
+                                    href="https://twitter.com/hashtag/BusinessIdea?src=hash&amp;ref_src=twsrc%5Etfw">#BusinessIdea</a>
+                                <a href="https://twitter.com/DeepCogitations?ref_src=twsrc%5Etfw">@DeepCogitations</a>
+                                <a href="https://t.co/3lqh2IFSBT">pic.twitter.com/3lqh2IFSBT</a>
+                            </p>&mdash; Cogitations
+                            (@DeepCogitations) <a
+                                href="https://twitter.com/DeepCogitations/status/830860946960764931?ref_src=twsrc%5Etfw">February
+                                12, 2017</a>
+                        </blockquote>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                         <img src="img/divider-white.png" />
                     </div>
                     <div class="col-md-4 passions-2" @click="showImageFullScreen('img/tweet2.jpeg')">
                         <div class="thumbnail"><img src="img/tweet2.jpeg"></div>
-                        <blockquote class="twitter-tweet" data-lang="en" data-dnt="true" data-theme="dark"><p lang="en" dir="ltr">Next in the series:<br>How to make <a href="https://twitter.com/Twitter?ref_src=twsrc%5Etfw">@Twitter</a> <a href="https://twitter.com/hashtag/MoreSuccessful?src=hash&amp;ref_src=twsrc%5Etfw">#MoreSuccessful</a> ?<a href="https://twitter.com/hashtag/Twitter?src=hash&amp;ref_src=twsrc%5Etfw">#Twitter</a> <a href="https://twitter.com/hashtag/EliteCommunities?src=hash&amp;ref_src=twsrc%5Etfw">#EliteCommunities</a> <a href="https://twitter.com/hashtag/DeepCogitations?src=hash&amp;ref_src=twsrc%5Etfw">#DeepCogitations</a> <a href="https://twitter.com/hashtag/BusinessIdea?src=hash&amp;ref_src=twsrc%5Etfw">#BusinessIdea</a> <a href="https://twitter.com/DeepCogitations?ref_src=twsrc%5Etfw">@DeepCogitations</a> <a href="https://t.co/NYM5phIuPb">pic.twitter.com/NYM5phIuPb</a></p>&mdash; Cogitations (@DeepCogitations) <a href="https://twitter.com/DeepCogitations/status/830861159716757504?ref_src=twsrc%5Etfw">February 12, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet" data-lang="en" data-dnt="true" data-theme="dark">
+                            <p lang="en" dir="ltr">Next in the series:<br>How to make <a
+                                    href="https://twitter.com/Twitter?ref_src=twsrc%5Etfw">@Twitter</a> <a
+                                    href="https://twitter.com/hashtag/MoreSuccessful?src=hash&amp;ref_src=twsrc%5Etfw">#MoreSuccessful</a>
+                                ?<a
+                                    href="https://twitter.com/hashtag/Twitter?src=hash&amp;ref_src=twsrc%5Etfw">#Twitter</a>
+                                <a
+                                    href="https://twitter.com/hashtag/EliteCommunities?src=hash&amp;ref_src=twsrc%5Etfw">#EliteCommunities</a>
+                                <a
+                                    href="https://twitter.com/hashtag/DeepCogitations?src=hash&amp;ref_src=twsrc%5Etfw">#DeepCogitations</a>
+                                <a
+                                    href="https://twitter.com/hashtag/BusinessIdea?src=hash&amp;ref_src=twsrc%5Etfw">#BusinessIdea</a>
+                                <a href="https://twitter.com/DeepCogitations?ref_src=twsrc%5Etfw">@DeepCogitations</a>
+                                <a href="https://t.co/NYM5phIuPb">pic.twitter.com/NYM5phIuPb</a>
+                            </p>&mdash; Cogitations
+                            (@DeepCogitations) <a
+                                href="https://twitter.com/DeepCogitations/status/830861159716757504?ref_src=twsrc%5Etfw">February
+                                12, 2017</a>
+                        </blockquote>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                         <img src="img/divider-white.png" />
                     </div>
                     <div class="col-md-4 passions" @click="showImageFullScreen('img/tweet3.jpeg')">
                         <div class="thumbnail"><img src="img/tweet3.jpeg"></div>
-                        <blockquote class="twitter-tweet" data-lang="en" data-dnt="true" data-theme="dark"><p lang="en" dir="ltr">Next in the series:<br>How to make <a href="https://twitter.com/bookmyshow?ref_src=twsrc%5Etfw">@bookmyshow</a> <a href="https://twitter.com/hashtag/MoreSuccessful?src=hash&amp;ref_src=twsrc%5Etfw">#MoreSuccessful</a> ?<a href="https://twitter.com/fafsters?ref_src=twsrc%5Etfw">@fafsters</a><a href="https://twitter.com/hashtag/Bookmyshow?src=hash&amp;ref_src=twsrc%5Etfw">#Bookmyshow</a> <a href="https://twitter.com/hashtag/bms?src=hash&amp;ref_src=twsrc%5Etfw">#bms</a><a href="https://twitter.com/hashtag/EmotionalConnect?src=hash&amp;ref_src=twsrc%5Etfw">#EmotionalConnect</a> <a href="https://twitter.com/hashtag/DeepCogitations?src=hash&amp;ref_src=twsrc%5Etfw">#DeepCogitations</a> <a href="https://twitter.com/hashtag/BusinessIdea?src=hash&amp;ref_src=twsrc%5Etfw">#BusinessIdea</a> <a href="https://twitter.com/DeepCogitations?ref_src=twsrc%5Etfw">@DeepCogitations</a> <a href="https://t.co/nyMLA5HOFe">pic.twitter.com/nyMLA5HOFe</a></p>&mdash; Cogitations (@DeepCogitations) <a href="https://twitter.com/DeepCogitations/status/978959653546504194?ref_src=twsrc%5Etfw">March 28, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet" data-lang="en" data-dnt="true" data-theme="dark">
+                            <p lang="en" dir="ltr">Next in the series:<br>How to make <a
+                                    href="https://twitter.com/bookmyshow?ref_src=twsrc%5Etfw">@bookmyshow</a> <a
+                                    href="https://twitter.com/hashtag/MoreSuccessful?src=hash&amp;ref_src=twsrc%5Etfw">#MoreSuccessful</a>
+                                ?<a href="https://twitter.com/fafsters?ref_src=twsrc%5Etfw">@fafsters</a><a
+                                    href="https://twitter.com/hashtag/Bookmyshow?src=hash&amp;ref_src=twsrc%5Etfw">#Bookmyshow</a>
+                                <a href="https://twitter.com/hashtag/bms?src=hash&amp;ref_src=twsrc%5Etfw">#bms</a><a
+                                    href="https://twitter.com/hashtag/EmotionalConnect?src=hash&amp;ref_src=twsrc%5Etfw">#EmotionalConnect</a>
+                                <a
+                                    href="https://twitter.com/hashtag/DeepCogitations?src=hash&amp;ref_src=twsrc%5Etfw">#DeepCogitations</a>
+                                <a
+                                    href="https://twitter.com/hashtag/BusinessIdea?src=hash&amp;ref_src=twsrc%5Etfw">#BusinessIdea</a>
+                                <a href="https://twitter.com/DeepCogitations?ref_src=twsrc%5Etfw">@DeepCogitations</a>
+                                <a href="https://t.co/nyMLA5HOFe">pic.twitter.com/nyMLA5HOFe</a>
+                            </p>&mdash; Cogitations
+                            (@DeepCogitations) <a
+                                href="https://twitter.com/DeepCogitations/status/978959653546504194?ref_src=twsrc%5Etfw">March
+                                28, 2018</a>
+                        </blockquote>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                         <img src="img/divider-white.png" />
                     </div>
                 </div>
@@ -253,34 +329,34 @@
             <img class="fullScreen" src="">
         </div>
         <div class="footer navbar navbar-transparent navbar-fixed-bottom"
-             style="background: rgba(0, 0, 0, 0.7); padding-top: 6px">
+            style="background: rgba(0, 0, 0, 0.7); padding-top: 6px">
             <a href="files/Resume-VivekChandra.pdf" data-toggle="tooltip" data-placement="top" target="_blank"
-               title="Download Resume">
+                title="Download Resume">
                 <img class="links" src="img/cv-icon.png" alt="Download Resume" height="36px" />
             </a>
             &nbsp;
             <a href="https://www.linkedin.com/in/vivekchandra007/" data-toggle="tooltip" data-placement="top"
-               target="_blank" title="LinkedIn">
+                target="_blank" title="LinkedIn">
                 <img src="img/linkedin2.png" alt="LinkedIn" height="36px" />
             </a>
             &nbsp;
             <a href="https://github.com/vivekchandra007" data-toggle="tooltip" data-placement="top" target="_blank"
-               title="GitHub">
+                title="GitHub">
                 <img src="img/github.png" alt="GitHub" height="36px" />
             </a>
             &nbsp;
             <a href="https://www.facebook.com/vivekchandraphotography/" data-toggle="tooltip" data-placement="top"
-               target="_blank" title="Facebook">
+                target="_blank" title="Facebook">
                 <img src="img/facebook.png" alt="Facebook" height="36px" />
             </a>
             &nbsp;
             <a href="https://www.instagram.com/vivekchandra007/" data-toggle="tooltip" data-placement="top"
-               target="_blank" title="Instagram">
+                target="_blank" title="Instagram">
                 <img src="img/instagram2.png" alt="Instagram" height="36px" />
             </a>
             &nbsp;
             <a href="https://twitter.com/DeepCogitations" data-toggle="tooltip" data-placement="top" target="_blank"
-               title="Twitter">
+                title="Twitter">
                 <img src="img/twitter3.png" alt="Twitter" height="36px" />
             </a>
             <!--<p>© Vivek Chandra</p>-->
